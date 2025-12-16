@@ -17,4 +17,4 @@ jobs:
                     exit 1 
                 fi
                 echo "${{secrets.KNOWN_HOSTS}}" > ~/.ssh/known_hosts
-                ssh -i ~/ssh_key ubuntu@65.1.86.215 -t "mkdir ~/iwasin "
+                ssh -i ~/ssh_key ubuntu@65.1.86.215 -t "cd deployment-testing && git pull origin main && pnpm run build && pm2 restart all "
