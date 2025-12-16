@@ -9,9 +9,9 @@ jobs:
         steps:
             - run: |
                 echo "${{secrets.aws_ssh_key}}" &> ~/ssh_key 
-                mkdir -p ~/runner/.ssh
+                mkdir -p ~/.ssh
                 chmod 700 ~/ssh_key
-                touch ~/runner/.ssh/known_hosts
+                touch ~/.ssh/known_hosts
                 echo "${{secrets.known_hosts}}" &> ~/.ssh/known_hosts
                 ssh -i ~/ssh_key ubuntu@65.1.86.215 -t "cd deployment-testing"
 
