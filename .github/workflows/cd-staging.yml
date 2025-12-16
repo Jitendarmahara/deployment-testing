@@ -12,6 +12,10 @@ jobs:
                 mkdir -p ~/.ssh
                 chmod 600 ~/ssh_key
                 touch ~/.ssh/known_hosts
+                if ! ssh-keygen -l -f ~/ssh_key >/dev/null 2>&1; 
+                    then echo "ERROR: SSH key could not be parsed. Check secret formatting (no extra quotes, correct newlines, not base64-encoded)." >&2 
+                    exit 1 
+                fi
                 echo "${{secrets.KNOWN_HOSTS}}" > ~/.ssh/known_hosts
                 ssh -i ~/ssh_key ubuntu@65.1.86.215 -t "cd deployment-testing"
 
