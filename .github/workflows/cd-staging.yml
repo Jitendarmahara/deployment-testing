@@ -17,4 +17,4 @@ jobs:
                     exit 1 
                 fi
                 echo "${{secrets.KNOWN_HOSTS}}" > ~/.ssh/known_hosts
-                ssh -i ~/ssh_key ubuntu@65.1.86.215 -t "source ~/.bashrc && cd deployment-testing && git pull origin main && pnpm run build && pm2 restart all "
+                ssh -i ~/ssh_key ubuntu@65.1.86.215 -t "source ~/.bashrc && cd deployment-testing && git pull origin main && /home/ubuntu/.nvm/versions/node/v24.12.0/bin/pnpm run build && /home/ubuntu/.local/share/pnpm/pm2 restart all "
